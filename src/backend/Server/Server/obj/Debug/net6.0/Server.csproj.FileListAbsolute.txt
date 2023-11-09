@@ -36,3 +36,5 @@ E:\Timing-Solutions-Task\src\backend\Server\Server\obj\Debug\net6.0\refint\Serve
 E:\Timing-Solutions-Task\src\backend\Server\Server\obj\Debug\net6.0\Server.pdb
 E:\Timing-Solutions-Task\src\backend\Server\Server\obj\Debug\net6.0\Server.genruntimeconfig.cache
 E:\Timing-Solutions-Task\src\backend\Server\Server\obj\Debug\net6.0\ref\Server.dll
+E:\Timing-Solutions-Task\src\backend\Server\Server\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+E:\Timing-Solutions-Task\src\backend\Server\Server\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

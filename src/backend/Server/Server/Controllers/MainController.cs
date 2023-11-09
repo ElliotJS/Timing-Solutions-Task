@@ -43,13 +43,24 @@ namespace Server.Controllers
 
             var count = 0;
 
+            ExternalDataController externalDataController = new ExternalDataController();
+
             while (webSocket.State == WebSocketState.Open)
             {
-                var wsMessage = new ArraySegment<Byte>(Encoding.UTF8.GetBytes($"Second count: {count}"));
+                RaceSessionData? data = await externalDataController.GetData();
 
-                await webSocket.SendAsync(wsMessage, WebSocketMessageType.Text, true, CancellationToken.None);
+                if (data != null)
+                {
+                    string dataSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+                    var wsMessage = new ArraySegment<Byte>(Encoding.UTF8.GetBytes(dataSerialized));
 
-                _logger.Log(LogLevel.Information, "Sent Message");
+                    await webSocket.SendAsync(wsMessage, WebSocketMessageType.Text, true, CancellationToken.None);
+
+                    _logger.Log(LogLevel.Information, "Sent Message");
+                } else
+                {
+                    _logger.Log(LogLevel.Information, "No API Data");
+                }
 
                 Thread.Sleep(1000);
                 count++;

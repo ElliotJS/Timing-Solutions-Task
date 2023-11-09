@@ -4,7 +4,7 @@ import { Button } from "react-native";
 import "./App.css";
 
 function App() {
-  const [data, SetData] = useState("");
+  const [data, SetData] = useState({});
   const webSocket = useRef(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function App() {
     };
 
     webSocket.current.onmessage = (event) => {
-      const response = event.data;
+      const response = JSON.parse(event.data);
       console.log(response);
       SetData(response);
     };
@@ -35,11 +35,15 @@ function App() {
     };
   }, []);
 
+  const closeWebSocket = () => {
+    webSocket.current.close();
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>{data}</p>
-        <Button title="Close Connection"></Button>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <Button onPress={closeWebSocket} title="Close Connection"></Button>
       </header>
     </div>
   );
