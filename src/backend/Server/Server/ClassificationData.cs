@@ -1,4 +1,6 @@
-﻿namespace Server
+﻿using Newtonsoft.Json;
+
+namespace Server
 {
     public class ClassificationData
     {
@@ -6,10 +8,13 @@
         public class ClassificationSectorTimeData
         {
 
+            [JsonProperty(PropertyName = "1")]
             public ClassificationTimeData? AdditionalProp1 { get; set; }
 
+            [JsonProperty(PropertyName = "2")]
             public ClassificationTimeData? AdditionalProp2 { get; set; }
 
+            [JsonProperty(PropertyName = "3")]
             public ClassificationTimeData? AdditionalProp3 { get; set; }
 
         }

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Button } from "react-native";
+
+import ClassificationComponent from "./ClassificationComponent";
 
 import "./App.css";
 
@@ -34,12 +35,6 @@ function App() {
     };
   }, []);
 
-  const closeWebSocket = () => {
-    webSocket.current.close();
-  };
-
-  //<pre>{JSON.stringify(data, null, 2)}</pre>
-
   return (
     <div className="App">
       <header className="App-header">
@@ -50,22 +45,11 @@ function App() {
             <p>{data.Track}</p>
             <div className="Classifications">
               {data.Classification.map((value) => (
-                <div className="Classification">
-                  <h2>{value.Name}</h2>
-                  <h3>{value.TeamName}</h3>
-                  <div className="ClassificationData">
-                    <p>Class: {value.ClassName}</p>
-                    <p>Start Number: {value.StartNumber}</p>
-                    <p>Position: {value.Position}</p>
-                    <p>Laps: {value.Laps}</p>
-                    <p>Finished: {String(value.Finished)}</p>
-                  </div>
-                </div>
+                <ClassificationComponent value={value} />
               ))}
             </div>
           </div>
         ) : null}
-        <Button onPress={closeWebSocket} title="Close Connection"></Button>
       </header>
     </div>
   );
