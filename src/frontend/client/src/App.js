@@ -16,7 +16,6 @@ function App() {
 
     webSocket.current.onmessage = (event) => {
       const response = JSON.parse(event.data);
-      console.log(response);
       SetData(response);
     };
 
@@ -47,19 +46,23 @@ function App() {
         {data ? (
           <div>
             <h1>{data.Series}</h1>
-            <p>{data.Name}</p>
+            <h2>{data.Name}</h2>
             <p>{data.Track}</p>
-            {data.Classification.map((value) => (
-              <div>
-                <h2>{value.Name}</h2>
-                <p>{value.TeamName}</p>
-                <p>Class: {value.ClassName}</p>
-                <p>Start Number: {value.StartNumber}</p>
-                <p>Position: {value.Position}</p>
-                <p>Laps: {value.Laps}</p>
-                <p>Finished: {String(value.Finished)}</p>
-              </div>
-            ))}
+            <div className="Classifications">
+              {data.Classification.map((value) => (
+                <div className="Classification">
+                  <h2>{value.Name}</h2>
+                  <h3>{value.TeamName}</h3>
+                  <div className="ClassificationData">
+                    <p>Class: {value.ClassName}</p>
+                    <p>Start Number: {value.StartNumber}</p>
+                    <p>Position: {value.Position}</p>
+                    <p>Laps: {value.Laps}</p>
+                    <p>Finished: {String(value.Finished)}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : null}
         <Button onPress={closeWebSocket} title="Close Connection"></Button>

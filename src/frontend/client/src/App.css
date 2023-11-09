@@ -20,8 +20,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
   color: white;
+}
+
+.Classifications {
+  border-top: #FFFFFF solid 2px;
+  width: 100vw;
+  padding-top: 20px;
+}
+
+.Classification {
+  margin-bottom: 20px;
+}
+
+.Classification h3 {
+  font-style: italic;
+}
+
+.Classification * {
+  margin-top : 0;  
+  margin-bottom : 0; 
+}
+
+.ClassificationData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ClassificationData p {
+  margin: 10px;
 }
 
 .App-link {
