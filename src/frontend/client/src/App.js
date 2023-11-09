@@ -58,8 +58,7 @@ function App() {
           Made by Elliot Smith. Hover over tiles to view Race Timing Statistics.
         </p>
         <p>
-          Email: <i>smith.elliotjames@gmail.com</i> Phone: <i>07550085026</i>{" "}
-          GitHub:{" "}
+          Email: <i>smith.elliotjames@gmail.com</i> GitHub:{" "}
           <i>
             <a href="https://github.com/ElliotJS">
               https://github.com/ElliotJS
