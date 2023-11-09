@@ -6,8 +6,6 @@ function ClassificationComponent(props) {
 
   const value = props.value;
 
-  console.log(value);
-
   const setDisplayingRaceTimes = (setShowTimes) => {
     if (setShowTimes) {
       SetShowingRaceTimes({ display: "flex" });
@@ -32,20 +30,31 @@ function ClassificationComponent(props) {
       <h3>{value.TeamName}</h3>
       <div className="ClassificationData" style={showingMainData}>
         <p>Class: {value.ClassName ? value.ClassName : "N/A"}</p>
+        <p>Finished: {String(value.Finished ? "Yes" : "No")}</p>
+        <div className="break" />
         <p>Start Number: {value.StartNumber}</p>
         <p>Position: {value.Position}</p>
         <p>Laps: {value.Laps}</p>
-        <p>Finished: {String(value.Finished ? "Yes" : "No")}</p>
       </div>
       <div className="ClassificationData RaceTimes" style={showingRaceTimes}>
         <p>
-          Fastest Lap Time:
+          Fastest Lap Time:{" "}
           {value.FastestLapTime ? value.FastestLapTime.Display : "Not set"}
         </p>
         <p>
           Last Lap Time:{" "}
           {value.LastLapTime ? value.LastLapTime.Display : "Not set"}
         </p>
+        <div className="break" />
+        {Object.keys(value.CurrentLapSectorTimes).map((key) => {
+          if (value.CurrentLapSectorTimes[key] == null) return null;
+
+          return (
+            <p>
+              Time Data {key}: {value.CurrentLapSectorTimes[key].Display}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
