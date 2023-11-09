@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
 .App-logo {
@@ -26,12 +27,16 @@
 
 .Classifications {
   border-top: #FFFFFF solid 2px;
-  width: 100vw;
+  width: 100%;
   padding-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .Classification {
-  margin-bottom: 20px;
+  margin: 5px;
+  border: #808080 solid 1px;
 }
 
 .Classification h3 {
